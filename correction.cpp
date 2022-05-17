@@ -37,13 +37,9 @@
 #define SENSOR_L 26 // IR-Sensor vänster för att hitta block 
 #define SENSOR_R 44 // IR-Sensor höger för att hitta block
 
-
-
 // --------------------- variables-------------
 bool orth = false;
 bool centered = false;
-//bool COT = false;
-
 // ------------Functions------------------
 void clear_pin(int x)
 {
@@ -144,12 +140,6 @@ void total_correction(int tolerance_angle, int tolerance, int PWM, float angle) 
     dist_FR = real_distance(ultraSensor(trigpin_FR, echopin_FR), angle);
     dist_BL = real_distance(ultraSensor(trigpin_BL, echopin_BL), angle);
     dist_BR = real_distance(ultraSensor(trigpin_BR, echopin_BR), angle);
-    /*
-    Serial.println(dist_FL);
-    Serial.print(dist_FR);
-    Serial.print(dist_BL);
-    Serial.print(dist_BR);
-    */
    if (orth == false){
     orth = rotational_correction(dist_FL, dist_BL, dist_FR, dist_BR, tolerance_angle, PWM);
    }
@@ -165,21 +155,8 @@ void total_correction(int tolerance_angle, int tolerance, int PWM, float angle) 
 }
 
 void pickLeftCube()
-{
-  /*while(true)
-  {
-    Serial.print("LEFT: ");
-    Serial.print(digitalRead(SENSOR_L));
-    Serial.print("\t");
-    Serial.print("RIGHT: ");
-    Serial.println(digitalRead(SENSOR_R));
-    delay(1);
-  }*/
-    int lastMeasurementIR = 0;
+{   int lastMeasurementIR = 0;
     int leftSensorHit = 0;
-    // bool testLeft = false;
-    // bool testRight = false;
-    // int rightSensorHit = 0;
     delay(300);
     translate_BWD(100);
     delay(160);
@@ -211,41 +188,12 @@ void pickLeftCube()
         break;
       }
     }
-    /*while(true)
-    {
-    leftSensorHit = digitalRead(SENSOR_L);
-    
-  if(leftSensorHit == 0){
-
-    int a = 0;
-      //testLeft = true;
-      while(true){
-        for(int i = 0; i < 3; ++i){
-          a = a + digitalRead(SENSOR_L);
-        }
-        a = a/3;
-        //rightSensorHit = digitalRead(SENSOR_R);
-        delay(30);
-        if (a == 1){
-          delay(150);
-          break;
-        }
-      //do nothing
-      }
-      translate_stop();
-      break;
-    
-    }
-    }*/
 }
 
 void pickRightCube()
 {
     int lastMeasurementIR = 0;
     int rightSensorHit = 0;
-    // bool testLeft = false;
-    // bool testRight = false;
-    // int rightSensorHit = 0;
     delay(300);
     translate_BWD(100);
     delay(200);
@@ -277,40 +225,4 @@ void pickRightCube()
         break;
       }
     }
-  /*
-    int rightSensorHit = 0;
-   // bool testLeft = false;
-   // bool testRight = false;
-   // int rightSensorHit = 0;
-   translate_BWD(50);
-   delay(50);
-   quickbrake(50);
-    translate_right(115);
-    while(true)
-    {
-    rightSensorHit = digitalRead(SENSOR_R);
-   // rightSensorHit = digitalRead(SENSOR_R);
-    if(rightSensorHit == 0)
-    {
-      int a = 0;
-      //testLeft = true;
-      while(true){
-        for(int i = 0; i < 3; ++i){
-          a = a + digitalRead(SENSOR_R);
-        }
-        a = a/3;
-        //rightSensorHit = digitalRead(SENSOR_R);
-        delay(30);
-        if (a == 1){
-          delay(150);
-          break;
-        }
-      //do nothing
-      }
-      translate_stop();
-      break;
-    
-    }
-    
-    }*/
 }

@@ -8,8 +8,6 @@
 // Petter Danev ED5
 #include "audio.h"
 
-
-
 //----------------Declarations-------------
 
 #define NOTE_B0  31
@@ -108,52 +106,14 @@ int Melody_Lasagna[] = {
 
   
   NOTE_D7, NOTE_AS7, NOTE_G7, NOTE_G7,
-  NOTE_D7//,  NOTE_D7, NOTE_A7, NOTE_F7,
-//  NOTE_F7, NOTE_D7, NOTE_D7,  NOTE_A7,
-//  NOTE_F7, NOTE_F7, 
-//  NOTE_C7, NOTE_C7,
-
-//  NOTE_E7, NOTE_E7, NOTE_F7,
-
-//  NOTE_D7, NOTE_AS7, NOTE_G7,  NOTE_G7,
-//  NOTE_D7,  NOTE_D7, NOTE_A7, NOTE_F7,
-//  NOTE_F7, NOTE_D7, NOTE_D7,  NOTE_A7,
-//  NOTE_F7, NOTE_F7, NOTE_C7, NOTE_C7,
-//
-//  NOTE_E7, NOTE_E7, NOTE_F7,
-//
-//  NOTE_D7, NOTE_AS7, NOTE_G7,  NOTE_G7,
-//  NOTE_D7,  NOTE_D7, NOTE_A7, NOTE_F7,
-//  NOTE_F7, NOTE_D7, NOTE_D7,  NOTE_A7,
-//  NOTE_F7, NOTE_F7, NOTE_C7, NOTE_C7,
-//
-//  NOTE_E7, NOTE_E7, NOTE_F7,
-
-
+  NOTE_D7
 };
 //Bitch lasagna + crab song tempo
 int Tempo_Lasagna[] = {
 
   
   8, 8, 8, 12,
-  8,// 12, 8, 8,
-//  12, 8, 12, 8,
- // 8, 12, 
-// 8, 8,
- // 8, 12, 8,
-
-//  8, 8, 8, 12,
-//  8, 12, 8, 8,
-//  12, 8, 12, 8,
-//  8, 12, 8, 8,
-//  8, 12, 8,
-//
-//  8, 8, 8, 12,
-//  8, 12, 8, 8,
-//  12, 8, 12, 8,
-//  8, 12, 8, 8,
-//  8, 12, 8,
-  
+  8
 };
 
 // Music notes of the song, 0 is a rest/pulse
@@ -263,39 +223,6 @@ int Tempo_Pirater[] = {
     250, 125, 375, 250, 125, 375,
     125, 125, 125, 125, 125, 500};
 
-
-int melody_Communism[] = {
-  NOTE_G4, NOTE_C5, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_E4, NOTE_E4, 
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4, NOTE_C4, NOTE_C4, 
-  NOTE_D4, NOTE_D4, NOTE_E4, NOTE_F4, NOTE_F4, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_C5, NOTE_D5, 
-  NOTE_E5, NOTE_D5, NOTE_C5, NOTE_D5, NOTE_B4, NOTE_G4, 
-  NOTE_C5, NOTE_B4, NOTE_A4, NOTE_B4, NOTE_E4, NOTE_E4, 
-  NOTE_A4, NOTE_G4, NOTE_F4, NOTE_G4, NOTE_C4, NOTE_C4, 
-  NOTE_C5, NOTE_B4, NOTE_A4, NOTE_G4, NOTE_B4, NOTE_C5, NOTE_D5, 
-  NOTE_E5, NOTE_D5, NOTE_C5, NOTE_B4, NOTE_C5, NOTE_D5, NOTE_G4, NOTE_G4, NOTE_B4, NOTE_C5, NOTE_D5,
-  NOTE_C5, NOTE_B4, NOTE_A4, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_E4, NOTE_E4, NOTE_G4, NOTE_A4, NOTE_B4,
-  NOTE_C5, NOTE_A4, NOTE_B4, NOTE_C5, NOTE_A4, NOTE_B4, NOTE_C5, NOTE_A4, NOTE_C5, NOTE_F5,
-  NOTE_F5, NOTE_E5, NOTE_D5, NOTE_C5, NOTE_D5, NOTE_E5, NOTE_C5, NOTE_C5,
-  NOTE_D5, NOTE_C5, NOTE_B4, NOTE_A4, NOTE_B4, NOTE_C5, NOTE_A4, NOTE_A4,
-  NOTE_C5, NOTE_B4, NOTE_A4, NOTE_G4, NOTE_C4, NOTE_G4, NOTE_A4, NOTE_B4, NOTE_C5
-};
-
-int Tempo_Communism[] = {
-  8, 4, 6, 16, 4, 8, 8, 
-  4, 6, 16, 4, 8, 8, 
-  4, 8, 8, 4, 8, 8, 4, 8, 8, 2,
-  4, 6, 16, 4, 8, 8, 
-  4, 6, 16, 4, 8, 8, 
-  4, 6, 16, 4, 6, 16, 
-  4, 6, 16, 8, 8, 8, 8, 
-  2, 8, 8, 8, 8, 3, 8, 8, 8, 8, 8,
-  2, 8, 8, 8, 8, 3, 8, 8, 8, 8, 8,
-  4, 6, 16, 4, 6, 16, 4, 8, 8, 2,
-  2, 8, 8, 8, 8, 3, 8, 2,
-  2, 8, 8, 8, 8, 3, 8, 2,
-  4, 6, 16, 4, 4, 2, 4, 4, 1
-};
-
 int melody_nokia[] = {
 
   // Nokia Ringtone 
@@ -343,14 +270,6 @@ void sing(int s) {
     }
     Melody[204] = 1;
     size = sizeof(Melody_Pirater);// / sizeof(int);
-    break;
-
-    case 3: for (unsigned i =0; i < 105; ++i){
-      Melody[i] = melody_Communism[i];
-    Tempo[i] = Tempo_Communism[i];
-    }
-    Melody[107] = 1;
-    size = sizeof(melody_Communism);// / sizeof(int);
     break;
 
     case 4: for(unsigned i =0; i < 26; ++i){
@@ -404,11 +323,8 @@ void sing(int s) {
 
       // stop the tone playing:
       buzz(melodyPin, 0, noteDuration);
-    }
-
-  
+    }  
 }
-
 
 void buzz(int targetPin, long frequency, long length) {
   digitalWrite(13, HIGH);
@@ -425,5 +341,4 @@ void buzz(int targetPin, long frequency, long length) {
     delayMicroseconds(delayValue); // wait again or the calculated delay value
   }
   digitalWrite(13, LOW);
-
 }
